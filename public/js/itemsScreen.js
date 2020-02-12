@@ -9,14 +9,44 @@ $(document).ready(function () {
 function initializePage() {
    //$("a.name").click(nameClick);
 
-   var data = JSON.parse(data.json);
-   readJSON('data.json');
+   //var data = JSON.parse(data.json);
+   //readJSON('../data.json');
 
    /*$.getJSON("../../data.json", function (json) {
       console.log(json);
       alert(json);
    });*/
-   console.log("Javascript connected!");
+
+   addCategory("Category");
+   addItem("New item", "3 Days");
+   addItem("another item", "2");
+}
+
+function addItem(str, exp) {
+   var ul = document.getElementById("items");
+   var liitem = document.createElement("li");
+   var aleft = document.createElement("a");
+   var aright = document.createElement("a");
+   liitem.setAttribute("class", "item");
+   aleft.setAttribute("class", "alignleft");
+   aleft.appendChild(document.createTextNode(str));
+   aright.setAttribute("class", "alignright");
+   aright.appendChild(document.createTextNode(exp));
+   liitem.appendChild(aleft);
+   liitem.appendChild(aright);
+   ul.appendChild(liitem);
+   console.log("adding...");
+}
+
+function addCategory(cat) {
+   var ul = document.getElementById("items");
+   var li = document.createElement("li");
+   var aleft = document.createElement("a");
+   li.setAttribute("class", "category");
+   aleft.setAttribute("class", "alignleft");
+   aleft.appendChild(document.createTextNode(cat));
+   li.appendChild(aleft);
+   ul.appendChild(li);
 }
 
 function readJSON(path) {
@@ -29,6 +59,7 @@ function readJSON(path) {
          var fileReader = new FileReader();
          fileReader.addEventListener('load', function () {
             //do stuff with fileReader.result
+
          });
          fileReader.readAsText(file);
       }

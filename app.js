@@ -46,3 +46,12 @@ app.get('/items', items.view);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+// Handlebars Helpers
+/*handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+handlebars.registerHelper("setVar", function (varName, varValue, options) {
+   options.data.root[varName] = varValue;
+});*/

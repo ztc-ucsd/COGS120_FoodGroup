@@ -18,15 +18,16 @@
       </div>
    </header>
 
-   <ul>
-      {{#each categories}}
+   <ul id="items">
+      
+      <!--{{#each categories}}
       {{#if section}}
          <li class="category"><a id="{{categoryName}}">{{categoryName}}</a></li>
          {{#each items}}
-         <li class="item"><a>{{itemName}}</a></li>
+            <li class="item"><a>{{itemName}}</a></li>
          {{/each}}
       {{/if}}
-      {{/each}}
+      {{/each}}-->
    </ul>
 
    <button id="addItembtn">+</button>
@@ -36,18 +37,22 @@
       <div class="modal-content">
          <span class="close">&times;</span>
          <header id="addItem-header">Add Item</header>
-         <form>
-            Item:<br>
-            <input type="text" />
-            <br />
-            Category:<br />
-            <div class="box"><p>Select category</p></div>
-            Expires:<br />
+         <form id="" method="get" action="/addItem">
+            <label for="itemName">Item:</label><br />
+            <input type="text" placeholder="Item Name" name="itemName" /><br />
+            <label for="category">Category:</label><br />
+            <select name="category">
+               {{#each categories}}
+               <option value="{{categoryName}}">{{categoryName}}</option>
+               {{/each}}
+            </select><br />
+            <label for="expiration">Expires:</label><br />
             <div class="box"><p>MM/DD/YYYY</p></div>
-            Notification:<br />
-            <div class="box"><p>MM/DD/YYYY</p></div>
+            <label for="notification">Notification:</label><br />
+            <input type="text" placeholder="3 Days" name="notification" />
+            <input type="submit" id="confirmItembtn" value="Add Item" />
          </form>
-         <button id="confirmItembtn">Add Item</button>
+         <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
 
    </div>
