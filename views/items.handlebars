@@ -1,0 +1,55 @@
+﻿<!doctype html>
+
+<html>
+<head>
+   <link href="css/items.css" rel="stylesheet" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="js/itemsScreen.js"></script>
+   
+</head>
+
+<body>
+   <header id="main-header">
+      <div class="container">
+         <h1>
+            <a class="alignleft" href="/">🡠</a>
+            <a href="#">Fridge</a>
+         </h1>
+      </div>
+   </header>
+
+   <ul>
+      {{#each categories}}
+      {{#if section}}
+         <li class="category"><a id="{{categoryName}}">{{categoryName}}</a></li>
+         {{#each items}}
+         <li class="item"><a>{{itemName}}</a></li>
+         {{/each}}
+      {{/if}}
+      {{/each}}
+   </ul>
+
+   <button id="addItembtn">+</button>
+
+   <!--Add item popup-->
+   <div id="myModal" class="modal">
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <header id="addItem-header">Add Item</header>
+         <form>
+            Item:<br>
+            <input type="text" />
+            <br />
+            Category:<br />
+            <div class="box"><p>Select category</p></div>
+            Expires:<br />
+            <div class="box"><p>MM/DD/YYYY</p></div>
+            Notification:<br />
+            <div class="box"><p>MM/DD/YYYY</p></div>
+         </form>
+         <button id="confirmItembtn">Add Item</button>
+      </div>
+
+   </div>
+</body>
+</html>
