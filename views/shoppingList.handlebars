@@ -12,14 +12,15 @@
 <body>
    <header id="main-header">
       <div class="container">
-         <h1><a href="#">Group</a></h1>
+         <h1><a href="#">Shopping List</a></h1>
       </div>
    </header>
 
    <section>
       <div class="container">
          {{#each members}}
-         <h1 id="sections">{{memberName}}</h1>
+         <!-- Need to change so doesnt link names to items -->
+         <h1 id="sections"><a href="items" id="{{id}}">{{memberName}}</a></h1>
          {{/each}}
       </div>
    </section>
@@ -38,13 +39,19 @@
    <div id="myModal" class="modal">
       <div class="modal-content">
          <span class="close">&times;</span>
-         <header id="addSection-header">Add Member</header>
-         <form id="addMemberForm" role="form" method="get" action="/addMember">
-            <label for="memberName">Name:</label>
-            <input type="text" id="memberName" placeholder="John Smith" name="memberName" />
-            <input type="submit" id="confirmSectionbtn" value="Add member" />
+         <header id="addItem-header">Add Item</header>
+         <form id="" method="get" action="/addItem">
+            <label for="itemName">Item:</label><br />
+            <input type="text" placeholder="Item Name" name="itemName" /><br />
+            <label for="member">Member:</label><br />
+            <select name="category">
+               {{#each members}}
+               <option value="{{memberName}}">{{memberName}}</option>
+               {{/each}}
+            </select><br />
+            <input type="submit" id="confirmItembtn" value="Add Item" />
          </form>
-         <!--<button id="confirmSectionbtn">Add Section</button>-->
+         <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
 
    </div>
