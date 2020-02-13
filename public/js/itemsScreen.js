@@ -1,3 +1,54 @@
+var items = [
+   {
+      "itemName": "Milk",
+      "section": "Fridge",
+      "category": "Dairy",
+      "expiration": "1 weeks",
+      "notification": "3 day",
+      "shared": "TRUE"
+   },
+   {
+      "itemName": "Chedder",
+      "section": "Fridge",
+      "category": "Dairy",
+      "expiration": "2 weeks",
+      "notification": "3 day",
+      "shared": "TRUE"
+   },
+   {
+      "itemName": "Greek Yogurt",
+      "section": "Fridge",
+      "category": "Dairy",
+      "expiration": "2 weeks",
+      "notification": "1 day",
+      "shared": "TRUE"
+   },
+   {
+      "itemName": "Apples",
+      "section": "Fridge",
+      "category": "Fruit",
+      "expiration": "2 weeks",
+      "notification": "1 day",
+      "shared": "TRUE"
+   },
+   {
+      "itemName": "Carrots",
+      "section": "Fridge",
+      "category": "Vegetable",
+      "expiration": "2 weeks",
+      "notification": "4 day",
+      "shared": "TRUE"
+   },
+   {
+      "itemName": "Doritos",
+      "section": "Pantry",
+      "category": "Snack",
+      "expiration": "11 monts",
+      "notification": "1 day",
+      "shared": "TRUE"
+   }
+]
+
 /**
    define javascript object var to hold the items data,
    loop through it to display items and categories correctly in initializePage
@@ -12,56 +63,6 @@ $(document).ready(function () {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-   var items = [
-      {
-         "itemName": "Milk",
-         "section": "Fridge",
-         "category": "Dairy",
-         "expiration": "1 weeks",
-         "notification": "3 day",
-         "shared": "TRUE"
-      },
-      {
-         "itemName": "Chedder",
-         "section": "Fridge",
-         "category": "Dairy",
-         "expiration": "2 weeks",
-         "notification": "3 day",
-         "shared": "TRUE"
-      },
-      {
-         "itemName": "Greek Yogurt",
-         "section": "Fridge",
-         "category": "Dairy",
-         "expiration": "2 weeks",
-         "notification": "1 day",
-         "shared": "TRUE"
-      },
-      {
-         "itemName": "Apples",
-         "section": "Fridge",
-         "category": "Fruit",
-         "expiration": "2 weeks",
-         "notification": "1 day",
-         "shared": "TRUE"
-      },
-      {
-         "itemName": "Carrots",
-         "section": "Fridge",
-         "category": "Vegetable",
-         "expiration": "2 weeks",
-         "notification": "4 day",
-         "shared": "TRUE"
-      },
-      {
-         "itemName": "Doritos",
-         "section": "Pantry",
-         "category": "Snack",
-         "expiration": "11 monts",
-         "notification": "1 day",
-         "shared": "TRUE"
-      }
-   ]
 
    var categories = [
       {
@@ -87,6 +88,8 @@ function initializePage() {
       alert(json);
    });*/
 
+   document.getElementById("items").innerHTML = "";
+
    for (var i = 0; i < categories.length; ++i) {
       addCategory(categories[i].categoryName);
       for (var j = 0; j < items.length; j++) {
@@ -100,6 +103,7 @@ function initializePage() {
 }
 
 function addItem(str, exp) {
+   console.log("adding item..." + str);
    var ul = document.getElementById("items");
    var liitem = document.createElement("li");
    var aleft = document.createElement("a");
@@ -126,32 +130,21 @@ function addCategory(cat) {
 }
 
 function confirmItembtn(e) {
+   console.log("btn press");
    e.preventDefault();
    
-   var modal = document.getElementById("myModal");
-   var name = document.getElementsByName("itemName")[0].value;
-   var category = document.getElementsByName("category")[0].value;
-   var notification = document.getElementsByName("notification")[0].value;
-   addItem(name, "1 day");
-   modal.style.display = "none";
-}
-
-function readJSON(path) {
-   var xhr = new XMLHttpRequest();
-   xhr.open('GET', path, true);
-   xhr.responseType = 'blob';
-   xhr.onload = function (e) {
-      if (this.status == 200) {
-         var file = new File([this.response], 'temp');
-         var fileReader = new FileReader();
-         fileReader.addEventListener('load', function () {
-            //do stuff with fileReader.result
-
-         });
-         fileReader.readAsText(file);
-      }
+   var item = {
+      "itemName": document.getElementsByName("itemName")[0].value,
+      "section": "Fridge",
+      "category": document.getElementsByName("category")[0].value,
+      "expiration": document.getElementsByName("expiration")[0].value,
+      "notification": document.getElementsByName("notification")[0].value,
+      "shared": "TRUE"
    }
-   xhr.send();
+   items.push(item);
+   var modal = document.getElementById("myModal");
+   modal.style.display = "none";
+   initializePage();
 }
 
 window.onload = function () {

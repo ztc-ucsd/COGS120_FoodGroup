@@ -48,9 +48,14 @@
                {{/each}}
             </select><br />
             <label for="expiration">Expires:</label><br />
-            <div class="box"><p>MM/DD/YYYY</p></div>
+            <input type="date" name="expiration" /><br />
             <label for="notification">Notification:</label><br />
-            <input type="text" placeholder="3 Days" name="notification" />
+            <input type="text" placeholder="3 Days" name="notification" /><br />
+            <label for="shared">Shared:</label>
+            <label class="switch">
+               <input type="checkbox">
+               <span class="slider round"></span>
+            </label>
             <input type="submit" id="confirmItembtn" value="Add Item" />
          </form>
          <!--<button id="confirmItembtn">Add Item</button>-->
