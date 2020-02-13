@@ -1,3 +1,8 @@
+/**
+   define javascript object var to hold the items data,
+   loop through it to display items and categories correctly in initializePage
+*/
+
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function () {
    initializePage();
@@ -7,6 +12,71 @@ $(document).ready(function () {
  * Function that is called when the document is ready.
  */
 function initializePage() {
+   var items = [
+      {
+         "itemName": "Milk",
+         "section": "Fridge",
+         "category": "Dairy",
+         "expiration": "1 weeks",
+         "notification": "3 day",
+         "shared": "TRUE"
+      },
+      {
+         "itemName": "Chedder",
+         "section": "Fridge",
+         "category": "Dairy",
+         "expiration": "2 weeks",
+         "notification": "3 day",
+         "shared": "TRUE"
+      },
+      {
+         "itemName": "Greek Yogurt",
+         "section": "Fridge",
+         "category": "Dairy",
+         "expiration": "2 weeks",
+         "notification": "1 day",
+         "shared": "TRUE"
+      },
+      {
+         "itemName": "Apples",
+         "section": "Fridge",
+         "category": "Fruit",
+         "expiration": "2 weeks",
+         "notification": "1 day",
+         "shared": "TRUE"
+      },
+      {
+         "itemName": "Carrots",
+         "section": "Fridge",
+         "category": "Vegetable",
+         "expiration": "2 weeks",
+         "notification": "4 day",
+         "shared": "TRUE"
+      },
+      {
+         "itemName": "Doritos",
+         "section": "Pantry",
+         "category": "Snack",
+         "expiration": "11 monts",
+         "notification": "1 day",
+         "shared": "TRUE"
+      }
+   ]
+
+   var categories = [
+      {
+         "categoryName": "Dairy",
+         "section": "Fridge"
+      },
+      {
+         "categoryName": "Fruit",
+         "section": "Fridge"
+      },
+      {
+         "categoryName": "Vegetable",
+         "section": "Fridge"
+      }
+   ]
    //$("a.name").click(nameClick);
 
    //var data = JSON.parse(data.json);
@@ -17,9 +87,16 @@ function initializePage() {
       alert(json);
    });*/
 
-   addCategory("Category");
-   addItem("New item", "3 Days");
-   addItem("another item", "2");
+   for (var i = 0; i < categories.length; ++i) {
+      addCategory(categories[i].categoryName);
+      for (var j = 0; j < items.length; j++) {
+         if (items[j].category == categories[i].categoryName) {
+            addItem(items[j].itemName, items[j].expiration);
+         }
+      }
+   }
+
+   $("#confirmItembtn").click(confirmItembtn);
 }
 
 function addItem(str, exp) {
@@ -35,7 +112,6 @@ function addItem(str, exp) {
    liitem.appendChild(aleft);
    liitem.appendChild(aright);
    ul.appendChild(liitem);
-   console.log("adding...");
 }
 
 function addCategory(cat) {
@@ -47,6 +123,17 @@ function addCategory(cat) {
    aleft.appendChild(document.createTextNode(cat));
    li.appendChild(aleft);
    ul.appendChild(li);
+}
+
+function confirmItembtn(e) {
+   e.preventDefault();
+   
+   var modal = document.getElementById("myModal");
+   var name = document.getElementsByName("itemName")[0].value;
+   var category = document.getElementsByName("category")[0].value;
+   var notification = document.getElementsByName("notification")[0].value;
+   addItem(name, "1 day");
+   modal.style.display = "none";
 }
 
 function readJSON(path) {

@@ -14,10 +14,10 @@ body {
    /*background-color: #008cba;*/
 }
 
-   #main-header a {
-      text-decoration: none;
-      color: #fff;
-   }
+#main-header a {
+   text-decoration: none;
+   color: #fff;
+}
 
 section {
    margin: 0;
@@ -57,17 +57,17 @@ li {
    float: left;
 }
 
-   li a {
-      text-decoration: none;
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-   }
+li a {
+   text-decoration: none;
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+}
 
-      li a:hover:not(.active) {
-         background-color: #111;
-      }
+li a:hover:not(.active) {
+   background-color: #111;
+}
 
 button {
    font-size: 24px;
