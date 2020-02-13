@@ -134,3 +134,13 @@ input {
    text-decoration: none;
    cursor: pointer;
 }
+
+#addItem-header {
+   font-size: 40px;
+   color: white;
+   margin: 0;
+   padding: 0;
+   top: 0;
+   background-color: #808080;
+}
+

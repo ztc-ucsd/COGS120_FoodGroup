@@ -136,6 +136,17 @@ function confirmItembtn(e) {
    modal.style.display = "none";
 }
 
+function confirmMemberbtn(e) {
+   e.preventDefault();
+   
+   var modal = document.getElementById("myModal");
+   var name = document.getElementsByName("itemName")[0].value;
+   var category = document.getElementsByName("category")[0].value;
+   var notification = document.getElementsByName("notification")[0].value;
+   addItem(name, "1 day");
+   modal.style.display = "none";
+}
+
 function readJSON(path) {
    var xhr = new XMLHttpRequest();
    xhr.open('GET', path, true);
