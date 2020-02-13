@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html>
+<head>
+   <title>Food Group</title>
+
+   <script src="/js/javascript.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <link href="/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+   <header id="main-header">
+      <div class="container">
+         <h1><a href="#">Group</a></h1>
+      </div>
+   </header>
+
+   <section>
+      <div class="container">
+         {{#each members}}
+         <h1 id="sections">{{memberName}}</h1>
+         {{/each}}
+      </div>
+   </section>
+
+   <div class="container">
+      <ul>
+         <li><a href="/">Sections</a></li>
+         <li><a href="shoppingList">Shopping List</a></li>
+         <li><a href="group">Group</a></li>
+      </ul>
+   </div>
+
+   <button id="addSectionbtn">+</button>
+
+   <!--Add section popup-->
+   <div id="myModal" class="modal">
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <header id="addSection-header">Add Member</header>
+         <form id="addMemberForm" role="form" method="get" action="/addMember">
+            <label for="memberName">Name:</label>
+            <input type="text" id="memberName" placeholder="John Smith" name="memberName" />
+            <input type="submit" id="confirmSectionbtn" value="Add member" />
+         </form>
+         <!--<button id="confirmSectionbtn">Add Section</button>-->
+      </div>
+
+   </div>
+
+</body>
+</html>

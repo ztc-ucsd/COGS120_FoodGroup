@@ -147,6 +147,17 @@ function confirmItembtn(e) {
    initializePage();
 }
 
+function confirmMemberbtn(e) {
+   e.preventDefault();
+   
+   var modal = document.getElementById("myModal");
+   var name = document.getElementsByName("itemName")[0].value;
+   var category = document.getElementsByName("category")[0].value;
+   var notification = document.getElementsByName("notification")[0].value;
+   addItem(name, "1 day");
+   modal.style.display = "none";
+}
+
 window.onload = function () {
 
    //var data = JSON.parse(data.json);

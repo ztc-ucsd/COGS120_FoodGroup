@@ -17,6 +17,24 @@
       }
    ],
 
+   "members": [
+      {
+         "memberName": "Michael Zuazo",
+         "html": "allmembers.handlebars",
+         "id": "member1"
+      },
+      {
+         "memberName": "Jacus Cortes",
+         "html": "allmembers.handlebars",
+         "id": "member2"
+      }, 
+      {
+         "memberName": "Zachary Chan",
+         "html": "allmembers.handlebars",
+         "id": "member3"
+      }
+   ],
+
    "categories": [
       {
          "categoryName": "Dairy",

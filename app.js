@@ -6,11 +6,15 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
 
 var index = require('./routes/index');
 var addSection = require('./routes/addSection');
 var items = require('./routes/items');
+var group = require('./routes/group');
+var addMember = require('./routes/addMember');
+var shoppingList = require('./routes/shoppingList');
+
 // Example route
 // var user = require('./routes/user');
 
@@ -40,6 +44,10 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/addSection', addSection.addSection);
 app.get('/items', items.view);
+app.get('/group', group.view);
+app.get('/addMember', addMember.addMember);
+app.get('/shoppingList', shoppingList.view);
+
 // Example route
 // app.get('/users', user.list);
 
