@@ -1,4 +1,4 @@
-Lab 5
+FoodGroup (name WIP)
 ====
 
-Lab 5: Putting it together
+
