@@ -10,5 +10,5 @@ exports.addSection = function(request, response) {
    }
    console.log(section);
    data.sections.push(section);
-   response.render('index.handlebars', data);
+   response.render('sections.handlebars', data);
 }
