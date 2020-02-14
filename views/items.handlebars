@@ -20,7 +20,7 @@
    </header>
 
    <ul id="items">
-      
+
       <!--{{#each categories}}
       {{#if section}}
          <li class="category"><a id="{{categoryName}}">{{categoryName}}</a></li>
@@ -37,8 +37,8 @@
    <div id="myModal" class="modal">
       <div class="modal-content">
          <span class="close">&times;</span>
-         <header id="addItem-header">Add Item</header>
-         <form id="" method="get" action="/addItem">
+         <header class="addItem-header">Add Item</header>
+         <form id="addItemForm" method="get" action="/addItem">
             <label for="itemName">Item:</label><br />
             <input type="text" placeholder="Item Name" name="itemName" /><br />
             <label for="category">Category:</label><br />
@@ -60,7 +60,44 @@
          </form>
          <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
+   </div>
 
+   <!--Item click popup-->
+   <div id="itemClick" class="modal">
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <header class="addItem-header" id="itemClickHeader"></header>
+         <form id="addItemForm" method="get" action="/addItem">
+            <label for="itemName">Item:</label><br />
+            <input type="text" placeholder="Item Name" name="itemName" /><br />
+            <label for="category">Category:</label><br />
+            <select name="category">
+               {{#each categories}}
+               <option value="{{categoryName}}">{{categoryName}}</option>
+               {{/each}}
+            </select><br />
+            <label for="expiration">Expires:</label><br />
+            <input type="date" name="expiration" /><br />
+            <label for="notification">Notification:</label><br />
+            <input type="text" placeholder="3 Days" name="notification" /><br />
+            <label for="shared">Shared:</label>
+            <label class="switch">
+               <input type="checkbox">
+               <span class="slider round"></span>
+            </label>
+            <input type="submit" id="confirmItembtn" value="Add Item" />
+         </form>
+         <!--<button id="confirmItembtn">Add Item</button>-->
+      </div>
+   </div>
+
+   <!--Bottom nav bar-->
+   <div class="container">
+      <ul id="navbar">
+         <li class="barli"><a href="/" class="bar">Sections</a></li>
+         <li class="barli"><a href="shoppingList" class="bar">Shopping List</a></li>
+         <li class="barli"><a href="group" class="bar">Group</a></li>
+      </ul>
    </div>
 </body>
 </html>
