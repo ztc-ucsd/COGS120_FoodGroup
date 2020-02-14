@@ -45,7 +45,7 @@ ul {
    font-size: 30px;
    list-style-type: none;
    margin: 0 0 0 -10px;
-   padding: 0 35% 0;
+   padding: 0 27% 0;
    overflow: hidden;
    background-color: #333;
    position: fixed;
@@ -157,4 +157,16 @@ input {
    box-sizing: border-box;
    padding: 12px 20px;
    margin: 8px 0;
+}
+
+.item {
+   font-size: 24px;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
 }
