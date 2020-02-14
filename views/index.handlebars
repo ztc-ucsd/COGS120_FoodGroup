@@ -1,53 +1,31 @@
-﻿<!doctype html>
-
+<!DOCTYPE html>
 <html>
 <head>
-   <title>Food Group</title>
+   <title>App Login</title>
 
    <script src="/js/javascript.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <link href="/css/style.css" rel="stylesheet" />
 
 </head>
+
 <body>
-   <header id="main-header">
-      <div class="container">
-         <h1><a href="#">Sections</a></h1>
-      </div>
-   </header>
 
-   <section>
-      <div class="container">
-         {{#each sections}}
-         <h1 id="sections"><a href="items" id="{{id}}">{{sectionName}}</a></h1>
-         {{/each}}
-      </div>
-   </section>
+<h3>FoodGroup Login</h3>
 
-   <div class="container">
-      <ul>
-         <li><a href="/">Sections</a></li>
-         <li><a href="shoppingList">Shopping List</a></li>
-         <li><a href="group">Group</a></li>
-      </ul>
-   </div>
+<div>
+  <form>
+    <div>
+    <input type="text" id="email" name="Email address" placeholder = "Email" required>
+    </div>
 
-   <button id="addSectionbtn">+</button>
-
-   <!--Add section popup-->
-   <div id="myModal" class="modal">
-      <div class="modal-content">
-         <span class="close">&times;</span>
-         <header id="addSection-header">Add Section</header>
-         <form id="addSectionForm" role="form" method="get" action="/addSection">
-            <label for="sectionName">Section:</label>
-            <input type="text" id="sectionName" placeholder="Section" name="sectionName" /><br />
-            <input type="submit" id="confirmSectionbtn" value="Add section" />
-         </form>
-         <!--<button id="confirmSectionbtn">Add Section</button>-->
+    <div>
+    <input type="text" id="password" name="Password" placeholder = "Password" required>
       </div>
 
-   </div>
+    <a href="sections"><button type="button">Login</button></a>
+  </form>
+</div>
 
 </body>
 </html>

@@ -144,3 +144,17 @@ input {
    background-color: #808080;
 }
 
+#email {
+   width: 50%;
+   box-sizing: border-box;
+   padding: 12px 20px;
+   margin: 8px 0;
+
+}
+
+#password {
+   width: 50%;
+   box-sizing: border-box;
+   padding: 12px 20px;
+   margin: 8px 0;
+}
