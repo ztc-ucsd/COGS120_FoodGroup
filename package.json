@@ -4,7 +4,7 @@
   "author": "Food Group",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IntroHCI/lab5"
+    "url": "https://github.com/ztc-ucsd/COGS120_FoodGroup"
   },
   "license": "NA",
   "private": true,
@@ -16,6 +16,6 @@
     "express3-handlebars": "*"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "12.x"
   }
 }
