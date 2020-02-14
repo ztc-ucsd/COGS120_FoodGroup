@@ -14,7 +14,7 @@ var items = require('./routes/items');
 var group = require('./routes/group');
 var addMember = require('./routes/addMember');
 var shoppingList = require('./routes/shoppingList');
-
+var sections = require('./routes/section');
 // Example route
 // var user = require('./routes/user');
 
@@ -41,13 +41,13 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
+app.get('/sections', sections.view);
 app.get('/addSection', addSection.addSection);
 app.get('/items', items.view);
 app.get('/group', group.view);
 app.get('/addMember', addMember.addMember);
 app.get('/shoppingList', shoppingList.view);
-
+app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
 
