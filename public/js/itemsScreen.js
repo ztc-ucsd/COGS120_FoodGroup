@@ -3,7 +3,7 @@ var items = [
       "itemName": "Milk",
       "section": "Fridge",
       "category": "Dairy",
-      "expiration": "1 weeks",
+      "expiration": "2020-02-19",
       "notification": "3 day",
       "shared": "TRUE"
    },
@@ -11,7 +11,7 @@ var items = [
       "itemName": "Chedder",
       "section": "Fridge",
       "category": "Dairy",
-      "expiration": "2 weeks",
+      "expiration": "2020-02-15",
       "notification": "3 day",
       "shared": "TRUE"
    },
@@ -19,7 +19,7 @@ var items = [
       "itemName": "Greek Yogurt",
       "section": "Fridge",
       "category": "Dairy",
-      "expiration": "2 weeks",
+      "expiration": "2020-03-01",
       "notification": "1 day",
       "shared": "TRUE"
    },
@@ -27,7 +27,7 @@ var items = [
       "itemName": "Apples",
       "section": "Fridge",
       "category": "Fruit",
-      "expiration": "2 weeks",
+      "expiration": "2020-02-17",
       "notification": "1 day",
       "shared": "TRUE"
    },
@@ -35,7 +35,7 @@ var items = [
       "itemName": "Carrots",
       "section": "Fridge",
       "category": "Vegetable",
-      "expiration": "2 weeks",
+      "expiration": "2020-03-04",
       "notification": "4 day",
       "shared": "TRUE"
    },
@@ -43,9 +43,24 @@ var items = [
       "itemName": "Doritos",
       "section": "Pantry",
       "category": "Snack",
-      "expiration": "11 monts",
+      "expiration": "2020-11-27",
       "notification": "1 day",
       "shared": "TRUE"
+   }
+]
+
+var categories = [
+   {
+      "categoryName": "Dairy",
+      "section": "Fridge"
+   },
+   {
+      "categoryName": "Fruit",
+      "section": "Fridge"
+   },
+   {
+      "categoryName": "Vegetable",
+      "section": "Fridge"
    }
 ]
 
@@ -63,33 +78,8 @@ $(document).ready(function () {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-
-   var categories = [
-      {
-         "categoryName": "Dairy",
-         "section": "Fridge"
-      },
-      {
-         "categoryName": "Fruit",
-         "section": "Fridge"
-      },
-      {
-         "categoryName": "Vegetable",
-         "section": "Fridge"
-      }
-   ]
-   //$("a.name").click(nameClick);
-
-   //var data = JSON.parse(data.json);
-   //readJSON('../data.json');
-
-   /*$.getJSON("../../data.json", function (json) {
-      console.log(json);
-      alert(json);
-   });*/
-
-   document.getElementById("items").innerHTML = "";
-
+   $("#items").html("");
+   
    for (var i = 0; i < categories.length; ++i) {
       addCategory(categories[i].categoryName);
       for (var j = 0; j < items.length; j++) {
@@ -99,7 +89,7 @@ function initializePage() {
       }
    }
 
-   $("#confirmItembtn").click(confirmItembtn);
+   $('.item').click(itemClick);
 }
 
 function addItem(str, exp) {
@@ -109,6 +99,7 @@ function addItem(str, exp) {
    var aleft = document.createElement("a");
    var aright = document.createElement("a");
    liitem.setAttribute("class", "item");
+   liitem.setAttribute("id", str);
    aleft.setAttribute("class", "alignleft");
    aleft.appendChild(document.createTextNode(str));
    aright.setAttribute("class", "alignright");
@@ -134,16 +125,18 @@ function confirmItembtn(e) {
    e.preventDefault();
    
    var item = {
-      "itemName": document.getElementsByName("itemName")[0].value,
+      "itemName": $('input[name="itemName"]').val(),
       "section": "Fridge",
-      "category": document.getElementsByName("category")[0].value,
-      "expiration": document.getElementsByName("expiration")[0].value,
-      "notification": document.getElementsByName("notification")[0].value,
+      "category": $('select[name="category"]').val(),
+      "expiration": $('input[name="expiration"]').val(),
+      "notification": $('input[name="notification"]').val(),
       "shared": "TRUE"
    }
+
    items.push(item);
    var modal = document.getElementById("myModal");
    modal.style.display = "none";
+   document.getElementById("addItemForm").reset();
    initializePage();
 }
 
@@ -158,11 +151,22 @@ function confirmMemberbtn(e) {
    modal.style.display = "none";
 }
 
+function itemClick(e) {
+   e.preventDefault();
+
+   var modal = document.getElementById("itemClick");
+   console.log("clicked on " + e.target.id);
+   //$('#itemClickHeader').html();
+   modal.style.display = "block";
+
+}
+
 window.onload = function () {
 
    //var data = JSON.parse(data.json);
 
    var modal = document.getElementById("myModal");
+   var itemInfo = document.getElementById("itemClick");
 
    // Get the button that opens the modal
    var btn = document.getElementById("addItembtn");
@@ -178,12 +182,17 @@ window.onload = function () {
    // When the user clicks on <span> (x), close the modal
    span.onclick = function () {
       modal.style.display = "none";
+      itemInfo.style.display = "none";
    }
 
    // When the user clicks anywhere outside of the modal, close it
    window.onclick = function (event) {
       if (event.target == modal) {
          modal.style.display = "none";
+      } else if (event.target == itemInfo) {
+         itemInfo.style.display = "none";
       }
    }
+
+   $("#confirmItembtn").click(confirmItembtn);
 };

@@ -18,7 +18,7 @@ body {
    color: #fff;
 }
 
-ul {
+#items {
    list-style-type: none;
    font-size: 24px;
    padding: 0;
@@ -82,7 +82,7 @@ input {
    font-size: 20px;
 }
 
-#addItem-header {
+.addItem-header {
    font-size: 40px;
    color: white;
    margin: 0;
@@ -149,6 +149,7 @@ input:checked + .slider:before {
    -webkit-transform: translateX(26px);
    -ms-transform: translateX(26px);
    transform: translateX(26px);
+}
 
 #addMember-header {
    font-size: 40px;
@@ -159,6 +160,7 @@ input:checked + .slider:before {
    background-color: #808080;
 }
 
+/* Popup window */
 .modal {
    display: none; /* Hidden by default */
    position: fixed; /* Stay in place */
@@ -203,3 +205,33 @@ input:checked + .slider:before {
    text-decoration: none;
    cursor: pointer;
 }
+
+/* navbar */
+#navbar {
+   font-size: 30px;
+   list-style-type: none;
+   margin: 0 0 0 -10px;
+   padding: 0 38% 0;
+   overflow: hidden;
+   background-color: #333;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}
+
+.barli {
+   float: left;
+}
+
+.bar {
+   text-decoration: none;
+   display: inline;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+}
+
+.bar:hover:not(.active) {
+   background-color: #111;
+}
+
