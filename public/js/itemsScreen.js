@@ -93,31 +93,23 @@ function initializePage() {
 }
 
 function addItem(str, exp) {
-   console.log("adding item..." + str);
-   var ul = document.getElementById("items");
-   var liitem = document.createElement("li");
-   var aleft = document.createElement("a");
-   var aright = document.createElement("a");
-   liitem.setAttribute("class", "item");
-   liitem.setAttribute("id", str);
-   aleft.setAttribute("class", "alignleft");
-   aleft.appendChild(document.createTextNode(str));
-   aright.setAttribute("class", "alignright");
-   aright.appendChild(document.createTextNode(exp));
-   liitem.appendChild(aleft);
-   liitem.appendChild(aright);
-   ul.appendChild(liitem);
+   var itemHTML = "<li class='item'><a id='" + str + "'class='alignleft'>" + str + "</a><a class='alignright'>" + exp
+                  + "</a></li>";
+   $("#items").append(itemHTML);
 }
 
 function addCategory(cat) {
-   var ul = document.getElementById("items");
+   var catHTML = "<li class=category><a id='" + cat + "'>" + cat + "</a></li>";
+   /*var ul = document.getElementById("items");
    var li = document.createElement("li");
    var aleft = document.createElement("a");
    li.setAttribute("class", "category");
    aleft.setAttribute("class", "alignleft");
    aleft.appendChild(document.createTextNode(cat));
    li.appendChild(aleft);
-   ul.appendChild(li);
+   ul.appendChild(li);*/
+   console.log(catHTML);
+   $("#items").append(catHTML);
 }
 
 function confirmItembtn(e) {
@@ -154,9 +146,27 @@ function confirmMemberbtn(e) {
 function itemClick(e) {
    e.preventDefault();
 
+   var ind;
+   var itemName = e.target.id;
    var modal = document.getElementById("itemClick");
-   console.log("clicked on " + e.target.id);
-   //$('#itemClickHeader').html();
+
+   //$('#itemClickHeader').html(itemName);
+   for (ind = 0; ind < items.length; ++ind) {
+      if (itemName == items[ind].itemName)
+         break;
+   }
+   $('input[name="itemName"]').val(itemName);
+   $('input[name="category"]').val(items[ind].category);
+   $('input[name="expiration"]').val(items[ind].expiration);
+   $('input[name="notification"]').val(items[ind].notification);
+
+   //Delete item if button is clicked
+   $('#deleteItemBtn').click = function deleteItem(e) {
+      alert("delete");
+      $(itemName).remove();
+      items[ind] = 0;
+   }
+
    modal.style.display = "block";
 
 }
