@@ -93,7 +93,7 @@ function initializePage() {
 }
 
 function addItem(str, exp) {
-   var itemHTML = "<li class='item'><a id='" + str + "'class='alignleft'>" + str + "</a><a class='alignright'>" + exp
+   var itemHTML = "<li class='item'><a href='#' id='" + str + "'class='alignleft'>" + str + "</a><a class='alignright'>" + exp
                   + "</a></li>";
    $("#items").append(itemHTML);
 }

@@ -7,6 +7,10 @@ body {
    text-align: center;
 }
 
+a {
+   text-decoration: none;
+}
+
 #main-header {
    font-size: 40px;
    background-color: #808080;
@@ -48,8 +52,8 @@ li {
    background-color: #c8c8c8;
 }
 
-.item {
-
+.item a{
+   color: black;
 }
 
 button {
