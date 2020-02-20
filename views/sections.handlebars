@@ -4,10 +4,10 @@
 <head>
    <title>Food Group</title>
 
-   <script src="/js/javascript.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <link href="/css/style.css" rel="stylesheet" />
+   <script src="/js/javascript.js"></script>
 
+   <link href="/css/style.css" rel="stylesheet" />
 </head>
 <body>
    <header id="main-header">
@@ -19,7 +19,7 @@
    <section>
       <div class="container">
          {{#each sections}}
-         <h1 id="sections"><a href="items" id="{{id}}">{{sectionName}}</a></h1>
+         <h1><a class="sections" href="#" id="{{sectionName}}">{{sectionName}}</a></h1>
          {{/each}}
       </div>
    </section>
