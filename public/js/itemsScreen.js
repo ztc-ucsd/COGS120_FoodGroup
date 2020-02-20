@@ -1,68 +1,4 @@
-var items = [
-   {
-      "itemName": "Milk",
-      "section": "Fridge",
-      "category": "Dairy",
-      "expiration": "2020-02-19",
-      "notification": "3 day",
-      "shared": "TRUE"
-   },
-   {
-      "itemName": "Chedder",
-      "section": "Fridge",
-      "category": "Dairy",
-      "expiration": "2020-02-15",
-      "notification": "3 day",
-      "shared": "TRUE"
-   },
-   {
-      "itemName": "Greek Yogurt",
-      "section": "Fridge",
-      "category": "Dairy",
-      "expiration": "2020-03-01",
-      "notification": "1 day",
-      "shared": "TRUE"
-   },
-   {
-      "itemName": "Apples",
-      "section": "Fridge",
-      "category": "Fruit",
-      "expiration": "2020-02-17",
-      "notification": "1 day",
-      "shared": "TRUE"
-   },
-   {
-      "itemName": "Carrots",
-      "section": "Fridge",
-      "category": "Vegetable",
-      "expiration": "2020-03-04",
-      "notification": "4 day",
-      "shared": "TRUE"
-   },
-   {
-      "itemName": "Doritos",
-      "section": "Pantry",
-      "category": "Snack",
-      "expiration": "2020-11-27",
-      "notification": "1 day",
-      "shared": "TRUE"
-   }
-]
-
-var categories = [
-   {
-      "categoryName": "Dairy",
-      "section": "Fridge"
-   },
-   {
-      "categoryName": "Fruit",
-      "section": "Fridge"
-   },
-   {
-      "categoryName": "Vegetable",
-      "section": "Fridge"
-   }
-]
+var data;
 
 /**
    define javascript object var to hold the items data,
@@ -79,12 +15,25 @@ $(document).ready(function () {
  */
 function initializePage() {
    $("#items").html("");
-   
-   for (var i = 0; i < categories.length; ++i) {
-      addCategory(categories[i].categoryName);
-      for (var j = 0; j < items.length; j++) {
-         if (items[j].category == categories[i].categoryName) {
-            addItem(items[j].itemName, items[j].expiration);
+
+   var length;
+   var str;
+
+   //URL to change data: http://myjson.com/1dpf9g
+   $.getJSON('https://api.myjson.com/bins/1dpf9g', function (inData) {
+      data = inData;
+      str = JSON.stringify(data.categories);
+      length = data.categories.length;
+      console.log(); //JSON.stringify(data.categories)
+   });
+
+   for (var i = 0; i < length; ++i) {
+      console.log("looping");
+      console.log("Name: " + data.categories[i].categoryName);
+      addCategory(data.categories[i].categoryName);
+      for (var j = 0; j < data.items.length; j++) {
+         if (data.items[j].category == data.categories[i].categoryName) {
+            addItem(data.items[j].itemName, data.items[j].expiration);
          }
       }
    }
@@ -93,22 +42,13 @@ function initializePage() {
 }
 
 function addItem(str, exp) {
-   var itemHTML = "<li class='item'><a href='#' id='" + str + "'class='alignleft'>" + str + "</a><a class='alignright'>" + exp
-                  + "</a></li>";
+   var itemHTML = "<li class='item'><a href='#' id='" + str + "'class='alignleft'>" + str +
+                  "</a><a class='alignright'>" + exp + "</a></li>";
    $("#items").append(itemHTML);
 }
 
 function addCategory(cat) {
    var catHTML = "<li class=category><a id='" + cat + "'>" + cat + "</a></li>";
-   /*var ul = document.getElementById("items");
-   var li = document.createElement("li");
-   var aleft = document.createElement("a");
-   li.setAttribute("class", "category");
-   aleft.setAttribute("class", "alignleft");
-   aleft.appendChild(document.createTextNode(cat));
-   li.appendChild(aleft);
-   ul.appendChild(li);*/
-   console.log(catHTML);
    $("#items").append(catHTML);
 }
 
@@ -125,7 +65,7 @@ function confirmItembtn(e) {
       "shared": "TRUE"
    }
 
-   items.push(item);
+   data.items.push(item);
    var modal = document.getElementById("myModal");
    modal.style.display = "none";
    document.getElementById("addItemForm").reset();

@@ -1,3 +1,19 @@
+var section;
+
+$(document).ready(function () {
+   initializePage();
+})
+
+function initializePage() {
+   $('.sections').click(SectionClick);
+}
+
+function SectionClick(e) {
+   e.preventDefault();
+   section = e.target.id;
+   window.location.href = 'items' + '#' + e.target.id;
+}
+
 window.onload = function () {
 
    var modal = document.getElementById("myModal");
@@ -26,16 +42,3 @@ window.onload = function () {
       }
    }
 };
-
-/*$(document).ready(function () {
-   initializePage();
-})
-
-function initializePage() {
-   $("#addSectionbtn").click(spaceClick);
-}
-
-function spaceClick(e) {
-   e.preventDefault();
-   document.write("hello");
-}*/
