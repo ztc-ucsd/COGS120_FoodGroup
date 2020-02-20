@@ -4,8 +4,8 @@
 <head>
    <link href="css/items.css" rel="stylesheet" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script type="text/javascript" src="data.json"></script>
-   <script src="js/itemsScreen.js"></script>
+   <script type="text/javascript" src="data2.json"></script>
+   <script src="js/items.js"></script>
    
 </head>
 
@@ -30,6 +30,16 @@
          {{/each}}
       {{/if}}
       {{/each}}-->
+
+      {{#each Sections}}
+         <h1>{{sectionName}}</h1>
+            {{#each categories}}
+               <h2>{{categoryName}}</h2>
+                  {{#each items}}
+                     <h3>{{itemName}}</h3>
+                  {{/each}}
+            {{/each}}
+      {{/each}}
    </ul>
 
    <button id="addItembtn">+</button>
@@ -39,7 +49,7 @@
       <div class="modal-content">
          <span class="close">&times;</span>
          <header class="addItem-header">Add Item</header>
-         <form id="addItemForm" method="get" action="/addItem">
+         <form id="addItemForm" method="get" action="/addItems">
             <label for="itemName">Item:</label><br />
             <input type="text" placeholder="Item Name" name="itemName" /><br />
             <label for="category">Category:</label><br />
