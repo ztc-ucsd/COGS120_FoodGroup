@@ -11,12 +11,16 @@
                      "itemName": "Carrot",
                      "expiration": "2020-02-19",
                      "notification": "3 day",
+                     "quantitiy": "4",
+                     "units": "",
                      "shared": "TRUE"
                   },
                   {
                      "itemName": "Celery",
                      "expiration": "2020-02-21",
                      "notification": "3 day",
+                     "quantitiy": "2",
+                     "units": "",
                      "shared": "TRUE"
                   }
                ]
@@ -28,12 +32,16 @@
                      "itemName": "Mango",
                      "expiration": "2020-02-19",
                      "notification": "3 day",
+                     "quantitiy": "3",
+                     "units": "",
                      "shared": "TRUE"
                   },
                   {
                      "itemName": "Pineapple",
                      "expiration": "2020-02-21",
                      "notification": "3 day",
+                     "quantitiy": "1",
+                     "units": "",
                      "shared": "TRUE"
                   }
                ]
@@ -50,12 +58,16 @@
                      "itemName": "Doritos",
                      "expiration": "2020-02-19",
                      "notification": "3 day",
+                     "quantitiy": "9.75",
+                     "units": "oz",
                      "shared": "TRUE"
                   },
                   {
                      "itemName": "Granola Bar",
                      "expiration": "2020-02-21",
                      "notification": "3 day",
+                     "quantitiy": "2",
+                     "units": "",
                      "shared": "TRUE"
                   }
                ]
@@ -67,12 +79,16 @@
                      "itemName": "Paprika",
                      "expiration": "2020-02-19",
                      "notification": "3 day",
+                     "quantitiy": "4",
+                     "units": "oz",
                      "shared": "TRUE"
                   },
                   {
                      "itemName": "Cumene",
                      "expiration": "2020-02-21",
                      "notification": "3 day",
+                     "quantitiy": "4",
+                     "units": "oz",
                      "shared": "TRUE"
                   }
                ]

@@ -2,7 +2,6 @@ var data = require("../data.json");
 
 exports.addSection = function(request, response) {
    
-	// Your code goes here
    var section = {
       "sectionName": request.query.sectionName,
       "html": request.query.sectionName + ".html",

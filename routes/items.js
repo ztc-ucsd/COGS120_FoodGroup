@@ -1,4 +1,3 @@
-
 var data = require('../data2.json');
 
 exports.view = function (request, response) {
@@ -9,8 +8,10 @@ exports.view = function (request, response) {
       "shared": "TRUE"
    }
 
-   console.log(data);
+   //console.log(data);
    console.log(data.Sections[0].categories[0]);
+   console.log("length: " + data.length);
+   console.log("length: " + data.Sections[0].length);
    //data['Sections'][0]['categories'][1]['items'].push(test);
    response.render('items.handlebars', data);
 }
