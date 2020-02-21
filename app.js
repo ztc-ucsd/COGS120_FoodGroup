@@ -16,6 +16,7 @@ var group = require('./routes/group');
 var addMember = require('./routes/addMember');
 var shoppingList = require('./routes/shoppingList');
 var sections = require('./routes/section');
+var addToList = require('./routes/addToList');
 // Example route
 // var user = require('./routes/user');
 
@@ -50,6 +51,7 @@ app.get('/group', group.view);
 app.get('/addMember', addMember.addMember);
 app.get('/shoppingList', shoppingList.view);
 app.get('/', index.view);
+app.get('/addToList', addToList.addToList);
 // Example route
 // app.get('/users', user.list);
 

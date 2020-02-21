@@ -1,4 +1,4 @@
-var data = require('../data2.json');
+var data = require('../itemsList.json');
 
 exports.view = function (request, response) {
    var test = {
@@ -13,5 +13,5 @@ exports.view = function (request, response) {
    console.log("length: " + data.length);
    console.log("length: " + data.Sections[0].length);
    //data['Sections'][0]['categories'][1]['items'].push(test);
-   response.render('items.handlebars', data);
+   response.render('items', data);
 }
