@@ -2,7 +2,6 @@ var data = require("../shoppingList.json");
 
 exports.addToList = function(request, response) {
    
-   // Your code goes here
    var item = {
       "listItem": request.query.itemName,
    }
