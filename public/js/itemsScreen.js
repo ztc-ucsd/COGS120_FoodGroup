@@ -14,29 +14,24 @@ $(document).ready(function () {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-   $("#items").html("");
+   var sections = $('#items').find('div'); //Get all sections
+   var section = window.location.href; //Current section passed through url from '/sections' page
 
-   var length;
-   var str;
+   //reformat from the url to only get section
+   var ind = section.lastIndexOf('#') + 1;
+   section = section.substring(ind);
+   section = section.replace("%20", " ");
+   console.log("Section: " + section);
 
-   //URL to change data: http://myjson.com/1dpf9g
-   $.getJSON('https://api.myjson.com/bins/1dpf9g', function (inData) {
-      data = inData;
-      str = JSON.stringify(data.categories);
-      length = data.categories.length;
-      console.log(); //JSON.stringify(data.categories)
-   });
-
-   for (var i = 0; i < length; ++i) {
-      console.log("looping");
-      console.log("Name: " + data.categories[i].categoryName);
-      addCategory(data.categories[i].categoryName);
-      for (var j = 0; j < data.items.length; j++) {
-         if (data.items[j].category == data.categories[i].categoryName) {
-            addItem(data.items[j].itemName, data.items[j].expiration);
+   if (section != "All Items") {
+      for (var i = 0; i < sections.length; i++) {
+         if (sections[i].id != section) {
+            $('#' + sections[i].id).html("");
          }
       }
    }
+
+   //THE ADD ITEM FORM STILL HAS ALL THE CATEGORIES SO WE STILL NEED TO ONLY SHOW THE CATEGORIES FOR THE CURRENT SECTION
 
    $('.item').click(itemClick);
 }
@@ -144,5 +139,5 @@ window.onload = function () {
       }
    }
 
-   $("#confirmItembtn").click(confirmItembtn);
+   //$("#confirmItembtn").click(confirmItembtn);
 };

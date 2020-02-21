@@ -3,13 +3,10 @@
 <html>
 <head>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <!--<script src="js/itemsScreen.js"></script>-->
+   <script src="js/itemsScreen.js"></script>
    <!--<script src="js/items.js"></script>-->
 
    <link href="/css/items.css" rel="stylesheet" />
-
-   <script type="text/javascript" src="data.json"></script>
-   <script src="js/itemsScreen.js"></script>
    
 </head>
 
@@ -27,13 +24,15 @@
    <ul id="items">
 
       {{#each Sections}}
-         <h1>{{sectionName}}</h1>
+         <div id={{sectionName}}>
+            <h1>{{sectionName}}</h1>
             {{#each categories}}
-               <h2>{{categoryName}}</h2>
+               <h2 class="category">{{categoryName}}</h2>
                   {{#each items}}
-                     <h3>{{itemName}}</h3>
+                     <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li>
                   {{/each}}
             {{/each}}
+         </div>
       {{/each}}
 
    </ul>
@@ -45,13 +44,15 @@
       <div class="modal-content">
          <span class="close">&times;</span>
          <header class="addItem-header">Add Item</header>
-         <form id="addItemForm" method="get" action="/addItem">
+         <form id="addItemForm" role="form" method="get" action="/addItem">
             <label for="itemName">Item:</label><br />
             <input type="text" placeholder="Item Name" name="itemName" /><br />
             <label for="category">Category:</label><br />
             <select name="category">
+               {{#each Sections}}
                {{#each categories}}
                <option value="{{categoryName}}">{{categoryName}}</option>
+               {{/each}}
                {{/each}}
             </select><br />
             <label for="expiration">Expires:</label><br />
@@ -80,8 +81,10 @@
             <input type="text" placeholder="Item Name" name="itemName" /><br />
             <label for="category">Category:</label><br />
             <select name="category">
+               {{#each Sections}}
                {{#each categories}}
                <option value="{{categoryName}}">{{categoryName}}</option>
+               {{/each}}
                {{/each}}
             </select><br />
             <label for="expiration">Expires:</label><br />

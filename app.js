@@ -11,6 +11,7 @@ var handlebars = require('express3-handlebars');
 var index = require('./routes/index');
 var addSection = require('./routes/addSection');
 var items = require('./routes/items');
+var addItem = require('./routes/addItem');
 var group = require('./routes/group');
 var addMember = require('./routes/addMember');
 var shoppingList = require('./routes/shoppingList');
@@ -44,6 +45,7 @@ if ('development' == app.get('env')) {
 app.get('/sections', sections.view);
 app.get('/addSection', addSection.addSection);
 app.get('/items', items.view);
+app.get('/addItem', addItem.addItem);
 app.get('/group', group.view);
 app.get('/addMember', addMember.addMember);
 app.get('/shoppingList', shoppingList.view);
