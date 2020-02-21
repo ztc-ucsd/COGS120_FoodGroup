@@ -28,7 +28,7 @@ $(document).ready(function () {
 })
 
 function initializePage() {
-   $("#shopping").html("");
+   /*$("#shopping").html("");
 
    console.log(items);
 
@@ -40,7 +40,7 @@ function initializePage() {
          }
       }
    }
-   
+   */
 }
 
 function addMember(name) {

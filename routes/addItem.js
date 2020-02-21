@@ -1,4 +1,4 @@
-var data = require("../data2.json");
+var data = require("../itemsList.json");
 
 exports.addItem = function(request, response) {
    
