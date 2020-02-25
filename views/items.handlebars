@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿<!doctype htblack
 
 <html>
 <head>
@@ -6,22 +6,19 @@
    <script src="js/itemsScreen.js"></script>
    <!--<script src="js/items.js"></script>-->
 
-   <link href="/css/items.css" rel="stylesheet" />
-   
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+   <link href="/css/improved.css" rel="stylesheet" />
 </head>
 
 <body>
    <header id="main-header">
-      <div class="container">
-         <h1>
-            <a class="alignleft" href="sections">🡠</a>
-            <a href="#"> - </a>
-            <a href="#" class="alignright"></a>
-         </h1>
+      <div class="container-fluid">
+         <a id="arrow" href="sections"><i class="fa fa-arrow-left"></i></a>
       </div>
    </header>
 
-   <ul id="items">
+<!--    <ul id="items">
 
       {{#each Sections}}
          <div id={{sectionName}}>
@@ -35,18 +32,32 @@
          </div>
       {{/each}}
 
-   </ul>
+   </ul> -->
 
-   <button id="addItembtn">+</button>
+   <div class="container-fluid" id="items">
+      {{#each Sections}}
+         <div id={{sectionName}}>
+            <h1 class="tabHeaders listHeader">{{sectionName}}</h1>
+            {{#each categories}}
+               <h2 class="category-list">{{categoryName}}</h2>
+                  {{#each items}}
+                     <!-- <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li> -->
+                     <h2><a href="#">{{itemName}}</a><a class="float-right">{{expiration}}</a></h2>
+                  {{/each}}
+            {{/each}}
+         </div>
+      {{/each}}
+   </div>
+
+   <button id="addItembtn"><i class="fa fa-plus"></i></button>
 
    <!--Add item popup-->
    <div id="myModal" class="modal">
-      <div class="modal-content">
-         <span class="close">&times;</span>
-         <header class="addItem-header">Add Item</header>
+      <div class="modal-content-items">
+          <span class="close"><i class="fa fa-window-close"></i></span>
+         <h1>Add Item</h1>
          <form id="addItemForm" role="form" method="get" action="/addItem">
-            <label for="itemName">Item:</label><br />
-            <input type="text" placeholder="Item Name" name="itemName" /><br />
+            <input type="text" placeholder="Bacon" name="itemName" /><br />
             <label for="category">Category:</label><br />
             <select name="category">
                {{#each Sections}}
@@ -56,7 +67,7 @@
                {{/each}}
             </select><br />
             <input type="hidden" name="sect" id="sect" value=""/>
-            <label for="expiration">Expires:</label><br />
+            <label for="expiration">Expiration Date:</label><br />
             <input type="date" name="expiration" /><br />
             <label for="notification">Notification:</label><br />
             <input type="text" placeholder="3 Days" name="notification" /><br />
@@ -65,7 +76,7 @@
                <input type="checkbox">
                <span class="slider round"></span>
             </label>
-            <input type="submit" id="confirmItembtn" value="Add Item" />
+            <input class="adding" type="submit" id="confirmItembtn" value="Add Item" />
          </form>
          <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
@@ -74,7 +85,7 @@
    <!--Item click popup-->
    <div id="itemClick" class="modal">
       <div class="modal-content">
-         <span class="close">&times;</span>
+         <span class="close"><i class="fa fa-window-close"></i></span>
          <header class="addItem-header" id="itemClickHeader">Edit Item</header>
          <button id="deleteItemBtn">Delete Item</button>
          <form id="addItemForm" method="get" action="/addItem">
@@ -104,12 +115,41 @@
    </div>
 
    <!--Bottom nav bar-->
-   <div class="container">
+   <!-- <div class="container">
       <ul id="navbar">
          <li class="barli"><a href="sections" class="bar">Sections</a></li>
          <li class="barli"><a href="shoppingList" class="bar">Shopping List</a></li>
          <li class="barli"><a href="group" class="bar">Group</a></li>
       </ul>
+   </div> -->
+
+    <!-- Nav bar -->
+   <div class="container-fluid">
+      <div class="row fixed-bottom">
+         <div class="col bottomNav">
+            <a href="sections" class="blackText">
+               <i class="fa fa-cutlery"></i>
+               Sections
+            </a>
+         </div>
+         <div class="col bottomNav">
+            <a href="shoppingList" class="blackText">
+               <i class="fa fa-list-alt"></i>
+               Shopping List
+            </a>
+         </div>
+         <div class="col bottomNav">
+            <a href="group" class="blackText">
+               <i class="fa fa-users"></i>
+               Group
+            </a>
+         </div>
+      </div>
    </div>
+
+   <!-- Needed for Bootstrap -->
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
