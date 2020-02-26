@@ -29,19 +29,17 @@ function initializePage() {
    if (section != "All Items") {
       //Loop to remove items that aren't in the current section
       for (var i = 0; i < sections.length; i++) {
-         console.log("s: " + sections[i].id);
-         console.log(sections[i].id != section);
          if (sections[i].id != section) {
             document.getElementById(sections[i].id).innerHTML = "";
             //$('#' + sections[i].id).html("");
          }
       }
 
-      //THE ADD ITEM FORM STILL HAS ALL THE CATEGORIES SO WE STILL NEED TO ONLY SHOW THE CATEGORIES FOR THE CURRENT SECTION
-      //Working now
+      //Removes category options that aren't in the section
       var options = $('select[name="category"] option'); //All category options in list
-      var categories = $("#" + section + " h2").toArray(); //Categories in the section
-
+      //var categories = $("#" + section + " h2").toArray(); //Categories in the section
+      var categories = document.getElementById(section).getElementsByClassName("category-list");
+      console.log("this: " + categories);
       for (var i = 0; i < options.length; i++) {
          for (var j = 0; j < categories.length; j++) {
             console.log("o: " + options[i].value + " c: " + categories[j].innerText); //debug prints
