@@ -210,3 +210,49 @@ input:checked + .slider:before {
    -ms-transform: translateX(26px);
    transform: translateX(26px);
 }
+
+.login-form{
+   position: absolute;
+   left: 50%;
+   top: 40%;
+   transform: translate(-50%, -50%);
+}
+
+.boxes{
+   font-size: 4em;
+   padding: 8px 0;
+   margin: 8px 0;
+   border-bottom: 3px solid #5B94CD;
+
+}
+
+.boxes input {
+   border: none;
+   outline: none;
+   background: none;
+}
+
+.signin {
+   width: 100%;
+   background: none;
+   border: 3px solid #5B94CD;
+   color: black;
+   padding: 8px 0;
+   font-size: 3em;
+   cursor: pointer;
+   margin: 8px 0;
+}
+
+.login{
+   font-size: 6em;
+   border-bottom: 10px solid #5B94CD;
+   margin: 0 500px 50px 0;
+}
+
+.catBtn{
+   margin: 100px auto 0 auto;
+   display: block;
+   font-size: 50px;
+   background: none;
+   border: 3px solid #5B94CD;
+}
