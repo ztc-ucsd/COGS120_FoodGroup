@@ -1,4 +1,4 @@
-﻿<!doctype htblack
+﻿<!doctype html>
 
 <html>
 <head>
@@ -13,34 +13,12 @@
 
 <body>
    <header id="main-header">
-      <!--<div class="container">
-         <h1>
-            <a class="alignleft" href="sections">🡠</a>
-            <a href="#"> - </a>
-            <a href="#" class="alignright"></a>
-         </h1>-->
       <div class="container-fluid">
          <a id="arrow" href="sections"><i class="fa fa-arrow-left"></i></a>
       </div>
    </header>
 
-<!--    <ul id="items">
 
-      {{#each Sections}}
-      <div id="{{sectionName}}">
-         <h1>{{sectionName}}</h1>
-         {{#each categories}}
-         <h2 class="category">{{categoryName}}</h2>
-         {{#each items}}
-         <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li>
-         {{/each}}
-         {{/each}}
-      </div>
-      {{/each}}
-
-   </ul> -->
-
-   <button id="addCatbtn">New Category</button><br />
    <div class="container-fluid" id="items">
       {{#each Sections}}
          <div id="{{sectionName}}">
@@ -48,13 +26,15 @@
             {{#each categories}}
                <h2 class="category-list">{{categoryName}}</h2>
                   {{#each items}}
-                     <!-- <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li> -->
                      <h2><a href="#">{{itemName}}</a><a class="float-right">{{expiration}}</a></h2>
                   {{/each}}
             {{/each}}
          </div>
       {{/each}}
    </div>
+
+   <button class="catBtn" id="addCatbtn"><i class="fa fa-plus"></i> Add Category</button><br />
+
 
    <button id="addItembtn"><i class="fa fa-plus"></i></button>
 
@@ -89,7 +69,6 @@
             </label>
             <input class="adding" type="submit" id="confirmItembtn" value="Add Item" />
          </form>
-         <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
    </div>
 
@@ -122,32 +101,21 @@
             </label>
             <input type="submit" id="confirmItembtn" value="Add Item" />
          </form>
-         <!--<button id="confirmItembtn">Add Item</button>-->
       </div>
    </div>
 
    <!--New Category popup-->
    <div id="newCat" class="modal">
       <div class="modal-content">
-         <span class="close">&times;</span>
-         <header class="addItem-header" id="newCat">Add Category</header>
+         <span class="close"><i class="fa fa-window-close"></i></span>
+         <header class="addItem-header" id="newCat"><h1>New Category</h1></header>
          <form id="addCatForm" method="get" action="/addCategory">
-            <label for="catName">Category:</label><br />
             <input type="text" placeholder="Category Name" name="catName" /><br />
             <input type="hidden" name="sect" class="sect" value="" />
-            <input type="submit" id="addCatSubmit" value="Add Category" />
+            <input type="submit" id="addCatSubmit" value="Confirm" />
          </form>
       </div>
    </div>
-
-   <!--Bottom nav bar-->
-   <!-- <div class="container">
-      <ul id="navbar">
-         <li class="barli"><a href="sections" class="bar">Sections</a></li>
-         <li class="barli"><a href="shoppingList" class="bar">Shopping List</a></li>
-         <li class="barli"><a href="group" class="bar">Group</a></li>
-      </ul>
-   </div> -->
 
     <!-- Nav bar -->
    <div class="container-fluid">
