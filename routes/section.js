@@ -1,5 +1,5 @@
 
-var data = require('../data.json');
+var data = require('../itemsList.json');
 
 exports.view = function (request, response) {
 

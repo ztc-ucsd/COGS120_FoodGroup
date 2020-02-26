@@ -8,10 +8,7 @@ exports.view = function (request, response) {
       "shared": "TRUE"
    }
 
-   //console.log(data);
-   console.log(data.Sections[0].categories[0]);
-   console.log("length: " + data.length);
-   console.log("length: " + data.Sections[0].length);
+   console.log(data);
    //data['Sections'][0]['categories'][1]['items'].push(test);
    response.render('items', data);
 }

@@ -1,14 +1,12 @@
-var data = require("../data.json");
+var data = require("../shoppingList.json");
 
 exports.addMember = function(request, response) {
    
-	// Your code goes here
    var member = {
       "memberName": request.query.memberName,
-      "html": request.query.memberName + ".html",
-      "id": request.query.memberName
+      "list": []
    }
    console.log(member);
-   data.members.push(member);
+   data.shoppingLists.push(member);
    response.render('group.handlebars', data);
 }

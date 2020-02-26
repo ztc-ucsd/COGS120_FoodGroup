@@ -15,8 +15,8 @@
       <div class="container">
          <h1>
             <a class="alignleft" href="sections">🡠</a>
-            <a href="#">Fridge</a>
-            <a href="#" class="alignright">History</a>
+            <a href="#"> - </a>
+            <a href="#" class="alignright"></a>
          </h1>
       </div>
    </header>
@@ -24,19 +24,20 @@
    <ul id="items">
 
       {{#each Sections}}
-         <div id={{sectionName}}>
-            <h1>{{sectionName}}</h1>
-            {{#each categories}}
-               <h2 class="category">{{categoryName}}</h2>
-                  {{#each items}}
-                     <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li>
-                  {{/each}}
-            {{/each}}
-         </div>
+      <div id="{{sectionName}}">
+         <h1>{{sectionName}}</h1>
+         {{#each categories}}
+         <h2 class="category">{{categoryName}}</h2>
+         {{#each items}}
+         <li><a href="#" class="alignleft item">{{itemName}}</a><a class="alignright">{{expiration}}</a></li>
+         {{/each}}
+         {{/each}}
+      </div>
       {{/each}}
 
    </ul>
 
+   <button id="addCatbtn">New Category</button><br />
    <button id="addItembtn">+</button>
 
    <!--Add item popup-->
@@ -55,12 +56,16 @@
                {{/each}}
                {{/each}}
             </select><br />
-            <input type="hidden" name="sect" id="sect" value=""/>
+            <input type="hidden" name="sect" class="sect" value="" />
             <label for="expiration">Expires:</label><br />
             <input type="date" name="expiration" /><br />
             <label for="notification">Notification:</label><br />
             <input type="text" placeholder="3 Days" name="notification" /><br />
-            <label for="shared">Shared:</label>
+            <label for="quantity">Quantity:</label><br />
+            <input type="text" placeholder="12" name="quantity" /><br />
+            <label for="units">Units:</label><br />
+            <input type="text" placeholder="oz" name="units" /><br />
+            <label for="shared">Shared:</label><br />
             <label class="switch">
                <input type="checkbox">
                <span class="slider round"></span>
@@ -92,6 +97,7 @@
             <input type="date" name="expiration" /><br />
             <label for="notification">Notification:</label><br />
             <input type="text" placeholder="3 Days" name="notification" /><br />
+
             <label for="shared">Shared:</label>
             <label class="switch">
                <input type="checkbox">
@@ -100,6 +106,20 @@
             <input type="submit" id="confirmItembtn" value="Add Item" />
          </form>
          <!--<button id="confirmItembtn">Add Item</button>-->
+      </div>
+   </div>
+
+   <!--New Category popup-->
+   <div id="newCat" class="modal">
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <header class="addItem-header" id="newCat">Add Category</header>
+         <form id="addCatForm" method="get" action="/addCategory">
+            <label for="catName">Category:</label><br />
+            <input type="text" placeholder="Category Name" name="catName" /><br />
+            <input type="hidden" name="sect" class="sect" value="" />
+            <input type="submit" id="addCatSubmit" value="Add Category" />
+         </form>
       </div>
    </div>
 

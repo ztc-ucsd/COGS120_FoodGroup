@@ -1,10 +1,4 @@
-var data;
 var section;
-
-/**
-   define javascript object var to hold the items data,
-   loop through it to display items and categories correctly in initializePage
-*/
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function () {
@@ -18,8 +12,10 @@ function initializePage() {
    var isin = false;
    var sections = $('#items').find('div'); //Get all sections
    var url = window.location.href;
+
    url = url.substring(url.lastIndexOf("/"));
-   if (url.substring(0, 8) != "/addItem") {
+   console.log(url.substring(0, 4));
+   if (url.substring(0, 4) != "/add") {
       section = window.location.href; //Current section passed through url from '/sections' page
 
       //reformat from the url to only get section
@@ -31,50 +27,44 @@ function initializePage() {
    section = window.name;
    console.log("Section: " + section);
    if (section != "All Items") {
+      //Loop to remove items that aren't in the current section
       for (var i = 0; i < sections.length; i++) {
+         console.log("s: " + sections[i].id);
+         console.log(sections[i].id != section);
          if (sections[i].id != section) {
-            $('#' + sections[i].id).html("");
+            document.getElementById(sections[i].id).innerHTML = "";
+            //$('#' + sections[i].id).html("");
          }
+      }
+
+      //THE ADD ITEM FORM STILL HAS ALL THE CATEGORIES SO WE STILL NEED TO ONLY SHOW THE CATEGORIES FOR THE CURRENT SECTION
+      //Working now
+      var options = $('select[name="category"] option'); //All category options in list
+      var categories = $("#" + section + " h2").toArray(); //Categories in the section
+
+      for (var i = 0; i < options.length; i++) {
+         for (var j = 0; j < categories.length; j++) {
+            console.log("o: " + options[i].value + " c: " + categories[j].innerText); //debug prints
+            console.log(options[i].value == categories[j].innerText);                 //debug prints
+            if (options[i].value == categories[j].innerText) {
+               isin = true;
+               break;
+            }
+         }
+         if (!isin) {
+            $('select option[value="' + options[i].value + '"]').remove();
+         }
+         isin = false;
       }
    }
 
-   $('#sect').val(section);
-
-   //THE ADD ITEM FORM STILL HAS ALL THE CATEGORIES SO WE STILL NEED TO ONLY SHOW THE CATEGORIES FOR THE CURRENT SECTION
-   /*var options = $('select[name="category"] option'); //All category options in list
-   var categories = $("#" + section + " h2").text(); //Categories in the section
-   
-   for (var i = 0; i < options.length; i++) {
-      for (var j = 0; j < categories.length; j++) {
-         console.log("o: " + options[i].value + "c: " + categories[j].text());
-         if (options[i] == categories[j]) {
-            isin = true;
-            break;
-         }
-      }
-      if (!isin) {
-         $('select option[value="' + options[i] + '"]').remove();
-      }
-      isin = false;
-   }
-   console.log("options: " + options[0].value);*/
+   $('.sect').val(section);
 
    $('.item').click(itemClick);
 }
 
-function addItem(str, exp) {
-   var itemHTML = "<li class='item'><a href='#' id='" + str + "'class='alignleft'>" + str +
-                  "</a><a class='alignright'>" + exp + "</a></li>";
-   $("#items").append(itemHTML);
-}
-
-function addCategory(cat) {
-   var catHTML = "<li class=category><a id='" + cat + "'>" + cat + "</a></li>";
-   $("#items").append(catHTML);
-}
-
 function confirmItembtn(e) {
-   console.log("btn press");
+   /*console.log("btn press");
    e.preventDefault();
    
    var item = {
@@ -90,7 +80,7 @@ function confirmItembtn(e) {
    var modal = document.getElementById("myModal");
    modal.style.display = "none";
    document.getElementById("addItemForm").reset();
-   initializePage();
+   initializePage();*/
 }
 
 function confirmMemberbtn(e) {
@@ -109,17 +99,14 @@ function itemClick(e) {
 
    var ind;
    var itemName = e.target.id;
+   console.log("item clicked: " + itemName);
    var modal = document.getElementById("itemClick");
 
    //$('#itemClickHeader').html(itemName);
-   for (ind = 0; ind < items.length; ++ind) {
-      if (itemName == items[ind].itemName)
-         break;
-   }
    $('input[name="itemName"]').val(itemName);
-   $('input[name="category"]').val(items[ind].category);
-   $('input[name="expiration"]').val(items[ind].expiration);
-   $('input[name="notification"]').val(items[ind].notification);
+   $('input[name="category"]').val();
+   $('input[name="expiration"]').val();
+   $('input[name="notification"]').val();
 
    //Delete item if button is clicked
    $('#deleteItemBtn').click = function deleteItem(e) {
@@ -129,31 +116,39 @@ function itemClick(e) {
    }
 
    modal.style.display = "block";
-
+   var span = document.getElementsByClassName("close")[1];
+   span.onclick = function () {
+      modal.style.display = "none";
+   }
 }
 
 window.onload = function () {
 
-   //var data = JSON.parse(data.json);
-
    var modal = document.getElementById("myModal");
    var itemInfo = document.getElementById("itemClick");
+   var catModal = document.getElementById("newCat");
 
    // Get the button that opens the modal
-   var btn = document.getElementById("addItembtn");
+   var itembtn = document.getElementById("addItembtn");
+   var catbtn = document.getElementById("addCatbtn");
 
    // Get the <span> element that closes the modal
    var span = document.getElementsByClassName("close")[0];
 
    // When the user clicks the button, open the modal 
-   btn.onclick = function () {
+   itembtn.onclick = function () {
       modal.style.display = "block";
+   }
+
+   catbtn.onclick = function () {
+      catModal.style.display = "block";
    }
 
    // When the user clicks on <span> (x), close the modal
    span.onclick = function () {
       modal.style.display = "none";
       itemInfo.style.display = "none";
+      catModal.style.display = "none";
    }
 
    // When the user clicks anywhere outside of the modal, close it
@@ -162,6 +157,8 @@ window.onload = function () {
          modal.style.display = "none";
       } else if (event.target == itemInfo) {
          itemInfo.style.display = "none";
+      } else if (event.target === catModal) {
+         catModal.style.display = "none";
       }
    }
 
