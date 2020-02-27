@@ -74,25 +74,25 @@ h2, h2 a{
 .modal-content {
    font-size: 35px;
    background-color: #DAE6E8;
-   margin: 75% 25% 0 25%;
+   margin: 25% 25% 0 25%;
    padding: 20px;
    border: 3px solid #5B94CD;
    width: 50%;
-   height: 15%;
+   height: 25%;
 }
 
 .modal-content-list {
-	height: 20%;
+	height: 30%;
 }
 
 .modal-content-items {
    font-size: 35px;
    background-color: #DAE6E8;
-   margin: 50% 25% 0 25%;
+   margin: 25% 25% 0 25%;
    padding: 20px;
    border: 3px solid #5B94CD;
    width: 50%;
-   height: 35%;
+   height: 60%;
 }
 
 .close {
