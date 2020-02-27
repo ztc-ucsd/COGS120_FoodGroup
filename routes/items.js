@@ -1,14 +1,14 @@
 var data = require('../itemsList.json');
 
 exports.view = function (request, response) {
-   var test = {
-      "itemName": "YESSSS",
-      "expiration": "2020-02-19",
-      "notification": "3 day",
-      "shared": "TRUE"
-   }
 
    console.log(data);
    //data['Sections'][0]['categories'][1]['items'].push(test);
+   data['viewAlt'] = false;
    response.render('items', data);
+}
+
+exports.viewAlt = function (request, response) {
+	data['viewAlt'] = true;
+	response.render('items', data);
 }

@@ -44,7 +44,7 @@ function initializePage() {
          for (var j = 0; j < categories.length; j++) {
             console.log("o: " + options[i].value + " c: " + categories[j].innerText); //debug prints
             console.log(options[i].value == categories[j].innerText);                 //debug prints
-            if (options[i].value == categories[j].innerText) {
+            if (options[i].value == "select" || options[i].value == categories[j].innerText) {
                isin = true;
                break;
             }
@@ -54,11 +54,42 @@ function initializePage() {
          }
          isin = false;
       }
+	  $('select[name="category"]').prop("selectedIndex", -1);
+	  var $inputs = $('select[name=category],input[name=cat]');
+	  $inputs.on('input', function () {
+        // Set the required property of the other input to false if this input is not empty.
+        $inputs.not(this).prop('required', !$(this).val().length);
+    });
    }
 
    $('.sect').val(section);
-
    $('.item').click(itemClick);
+   $('.close').click(close);
+   $('#addCatbtn').click(analytics);
+   $('#addItemForm').on('submit', typed);
+}
+
+function close(e) {
+	e.preventDefault();
+	
+	var modal = document.getElementById("myModal");
+    var itemInfo = document.getElementById("itemClick");
+    var catModal = document.getElementById("newCat");
+   
+    modal.style.display = "none";
+    itemInfo.style.display = "none";
+    catModal.style.display = "none";
+}
+
+function analytics(e) {
+   e.preventDefault();
+   ga("send", "event", 'add category', 'click');
+}
+
+function typed(e) {
+   if ($('input[name=cat]').val().length != 0) {
+      ga("send", "event", 'new category', 'typing');
+   }   
 }
 
 function confirmItembtn(e) {
@@ -130,23 +161,15 @@ window.onload = function () {
    var itembtn = document.getElementById("addItembtn");
    var catbtn = document.getElementById("addCatbtn");
 
-   // Get the <span> element that closes the modal
-   var span = document.getElementsByClassName("close")[0];
-
    // When the user clicks the button, open the modal 
    itembtn.onclick = function () {
       modal.style.display = "block";
    }
-
-   catbtn.onclick = function () {
-      catModal.style.display = "block";
-   }
-
-   // When the user clicks on <span> (x), close the modal
-   span.onclick = function () {
-      modal.style.display = "none";
-      itemInfo.style.display = "none";
-      catModal.style.display = "none";
+	
+   if(catbtn){
+	   catbtn.onclick = function () {
+		  catModal.style.display = "block";
+	   }
    }
 
    // When the user clicks anywhere outside of the modal, close it

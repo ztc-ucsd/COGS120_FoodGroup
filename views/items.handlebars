@@ -9,6 +9,18 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    <link href="/css/improved.css" rel="stylesheet" />
+   
+   <!-- Google Analytics -->
+   <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-158783760-2', 'auto');
+   ga('send', 'pageview');
+   </script>
+   <!-- End Google Analytics -->
 </head>
 
 <body>
@@ -33,11 +45,12 @@
       {{/each}}
    </div>
 
-   <button class="catBtn" id="addCatbtn"><i class="fa fa-plus"></i> Add Category</button><br />
-
-
+	{{#if viewAlt}}
+	
+	{{else}}
+	   <button class="catBtn" id="addCatbtn"><i class="fa fa-plus"></i> Add Category</button><br />
+    {{/if}}
    <button id="addItembtn"><i class="fa fa-plus"></i></button>
-
    <!--Add item popup-->
    <div id="myModal" class="modal">
       <div class="modal-content-items">
@@ -46,16 +59,22 @@
          <form id="addItemForm" role="form" method="get" action="/addItem">
             <input type="text" placeholder="Bacon" name="itemName" /><br />
             <label for="category">Category:</label><br />
-            <select name="category">
+            <select name="category" required>
+            {{#if viewAlt}}
+			      <!--<option disabled selected value="select"> -- select a category -- </option>-->
+            {{/if}}
                {{#each Sections}}
                {{#each categories}}
                <option value="{{categoryName}}">{{categoryName}}</option>
                {{/each}}
                {{/each}}
             </select><br />
+			{{#if viewAlt}}
+				<input type="text" name="cat" placeholder="New Category" required><br />
+			{{/if}}
             <input type="hidden" name="sect" class="sect" value="" />
             <label for="expiration">Expires:</label><br />
-            <input type="date" name="expiration" /><br />
+            <input type="date" name="expiration" required/><br />
             <label for="notification">Notification:</label><br />
             <input type="text" placeholder="3 Days" name="notification" /><br />
             <!--<label for="quantity">Quantity:</label><br />

@@ -12,13 +12,23 @@ exports.addItem = function (request, response) {
    }
 
    var category = request.query.category;
+   console.log("category: " + category);
    var i;
    var k;
+
+   if(!category) {
+      category = request.query.cat;
+      var cat = {
+         "categoryName": category,
+         "items": []
+      }
+   }
    console.log("length: " + data.Sections[0].categories.length);
 loop1:
    for (i = 0; i < data['Sections'].length; i++) {
       console.log(i + " s: " + data.Sections[i].sectionName);
       if (section == "All Items" || data.Sections[i].sectionName == section) {
+         data.Sections[i].categories.push(cat);
 loop2:
          for (k = 0; k < data.Sections[i].categories.length; k++) {
             console.log("c: " + data.Sections[i].categories[k].categoryName);
@@ -28,7 +38,10 @@ loop2:
          }
       }
    }
-   console.log("This: " + data.Sections[i].categories[k].items);  
+   if (!k) {
+      //data.Sections[i].
+   }
+   console.log("ind: " + k);
    data.Sections[i].categories[k].items.push(item);
    response.render('items.handlebars', data);
 }
