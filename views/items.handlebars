@@ -58,7 +58,7 @@
           <span class="close"><i class="fa fa-window-close"></i></span>
          <h1>Add Item</h1>
          <form id="addItemForm" role="form" method="get" action="/addItem">
-            <input type="text" placeholder="Bacon" name="itemName" /><br />
+            <input type="text" placeholder="Bacon" name="itemName" required/><br />
             <label for="category">Category:</label><br />
             <select name="category" required>
             {{#if viewAlt}}
