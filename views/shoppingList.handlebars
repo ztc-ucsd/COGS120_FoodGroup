@@ -38,7 +38,7 @@
          <span class="close"><i class="fa fa-window-close"></i></span>
          <h1>Add Item</h1>
          <form id="addItem" method="get" action="/addToList">
-            <input type="text" placeholder="Apples" name="itemName" /><br />
+            <input type="text" placeholder="Apples" name="itemName" required /><br />
             <label for="member">Member:</label><br />
             <select name="member">
                {{#each shoppingLists}}
