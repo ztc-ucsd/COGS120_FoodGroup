@@ -256,3 +256,7 @@ input:checked + .slider:before {
    background: none;
    border: 3px solid #5B94CD;
 }
+
+.align-right {
+   float: right;
+}

@@ -31,21 +31,22 @@
       </div>
    </header>
 
-   <label for="showShared">Show Shared:</label> <br />
-   <label class="switch">
-      <input type="checkbox" name="showShared">
-      <span class="slider round"></span>
-   </label>
+
 
    <div class="container-fluid" id="items">
       {{#each Sections}}
       <div id="{{sectionName}}">
          <h1 class="tabHeaders listHeader">{{sectionName}}</h1>
-         {{#each categories}}
-         <h2 class="category-list">{{categoryName}}</h2>
-         {{#each items}}
-         <h2><a href="#" class="item {{shared}}">{{itemName}}     {{expiration}}</a><!--<a class="float-right {{shared}}">{{expiration}}</a>--></h2>
-         {{/each}}
+            <label for="showShared"><h3>Show Shared:</h3></label> <br />
+               <label class="switch">
+               <input type="checkbox" name="showShared">
+               <span class="slider round"></span>
+            </label>
+            {{#each categories}}
+               <h2 class="category-list">{{categoryName}}</h2>
+            {{#each items}}
+               <h2><a href="#" class="item {{shared}}">{{itemName}}<span class="align-right">{{expiration}}</span></a></h2>
+            {{/each}}
          {{/each}}
       </div>
       {{/each}}
