@@ -26,9 +26,10 @@ function initializePage() {
    }
    section = window.name;
    console.log("Section: " + section);
-   if (section != "All Items") {
+   //if (section != "All Items") {
       //Loop to remove items that aren't in the current section
       for (var i = 0; i < sections.length; i++) {
+         console.log("js section: " + sections[i]);
          if (sections[i].id != section) {
             document.getElementById(sections[i].id).innerHTML = "";
             //$('#' + sections[i].id).html("");
@@ -60,8 +61,15 @@ function initializePage() {
         // Set the required property of the other input to false if this input is not empty.
         $inputs.not(this).prop('required', !$(this).val().length);
     });
+   //}
+
+   // hide shared items from other people
+   var share = document.getElementsByClassName("on");
+   for (var i = 0; i < share.length; i++) {
+      share[i].style.display = "none";
    }
 
+   $('input[name=showShared').click(shared);
    $('.sect').val(section);
    $('.item').click(itemClick);
    $('.close').click(close);
@@ -90,6 +98,20 @@ function typed(e) {
    if ($('input[name=cat]').val().length != 0) {
       ga("send", "event", 'new category', 'typing');
    }   
+}
+
+function shared(e) {
+   var shared = document.getElementsByClassName("on");
+   if ($(this).is(":checked")) {
+      console.log("showing shared items...");
+      for (var i = 0; i < shared.length; i++) {
+         console.log(shared[i]);
+         shared[i].style.display = "block";
+      }
+   } else {
+      console.log("showing my items...");
+      initializePage();
+   }
 }
 
 function confirmItembtn(e) {
@@ -138,17 +160,17 @@ function itemClick(e) {
    $('input[name="notification"]').val();
 
    //Delete item if button is clicked
-   $('#deleteItemBtn').click = function deleteItem(e) {
-      alert("delete");
-      $(itemName).remove();
-      items[ind] = 0;
-   }
+   $('#deleteItemBtn').click(deleteItem);
 
    modal.style.display = "block";
    var span = document.getElementsByClassName("close")[1];
    span.onclick = function () {
       modal.style.display = "none";
    }
+}
+
+function deleteItem(e) {
+   console.log("delete");
 }
 
 window.onload = function () {

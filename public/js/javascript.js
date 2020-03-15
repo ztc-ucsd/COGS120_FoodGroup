@@ -11,7 +11,7 @@ function initializePage() {
 function SectionClick(e) {
    e.preventDefault();
    section = e.target.id;
-   window.location.href = 'items_A' + '#' + e.target.id;
+   window.location.href = 'items' + '#' + e.target.id;
 }
 
 window.onload = function () {

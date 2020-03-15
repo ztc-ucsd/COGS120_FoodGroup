@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var addSection = require('./routes/addSection');
 var items = require('./routes/items');
 var addItem = require('./routes/addItem');
+var deleteItem = require('./routes/deleteItem');
 var addCategory = require('./routes/addCategory')
 var group = require('./routes/group');
 var addMember = require('./routes/addMember');
@@ -44,9 +45,9 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/sections', sections.view);
 app.get('/addSection', addSection.addSection);
-app.get('/items_A', items.view);
-app.get('/items_B', items.viewAlt);
+app.get('/items', items.view);
 app.get('/addItem', addItem.addItem);
+app.get('/deleteItem', deleteItem.deleteItem);
 app.get('/addCategory', addCategory.addCategory);
 app.get('/group', group.view);
 app.get('/addMember', addMember.addMember);

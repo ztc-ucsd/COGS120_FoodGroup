@@ -4,7 +4,6 @@ exports.view = function (request, response) {
 
    console.log(data);
    //data['Sections'][0]['categories'][1]['items'].push(test);
-   data['viewAlt'] = false;
    response.render('items', data);
 }
 

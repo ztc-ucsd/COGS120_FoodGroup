@@ -31,78 +31,73 @@
       </div>
    </header>
 
+   <label for="showShared">Show Shared:</label> <br />
+   <label class="switch">
+      <input type="checkbox" name="showShared">
+      <span class="slider round"></span>
+   </label>
 
    <div class="container-fluid" id="items">
       {{#each Sections}}
-         <div id="{{sectionName}}">
-            <h1 class="tabHeaders listHeader">{{sectionName}}</h1>
-            {{#each categories}}
-               <h2 class="category-list">{{categoryName}}</h2>
-                  {{#each items}}
-                     <h2><a href="#">{{itemName}}</a><a class="float-right">{{expiration}}</a></h2>
-                  {{/each}}
-            {{/each}}
-         </div>
+      <div id="{{sectionName}}">
+         <h1 class="tabHeaders listHeader">{{sectionName}}</h1>
+         {{#each categories}}
+         <h2 class="category-list">{{categoryName}}</h2>
+         {{#each items}}
+         <h2><a href="#" class="item {{shared}}">{{itemName}}     {{expiration}}</a><!--<a class="float-right {{shared}}">{{expiration}}</a>--></h2>
+         {{/each}}
+         {{/each}}
+      </div>
       {{/each}}
    </div>
 
-	{{#if viewAlt}}
-	
-	{{else}}
-	   <button class="catBtn" id="addCatbtn"><i class="fa fa-plus"></i> Add Category</button><br />
-    {{/if}}
+   <button class="catBtn" id="addCatbtn"><i class="fa fa-plus"></i> Add Category</button><br />
    <button id="addItembtn"><i class="fa fa-plus"></i></button>
    <!--Add item popup-->
    <div id="myModal" class="modal">
       <div class="modal-content-items">
-          <span class="close"><i class="fa fa-window-close"></i></span>
+         <span class="close"><i class="fa fa-window-close"></i></span>
          <h1>Add Item</h1>
          <form id="addItemForm" role="form" method="get" action="/addItem">
             <input type="text" placeholder="Bacon" name="itemName" /><br />
             <label for="category">Category:</label><br />
             <select name="category" required>
-            {{#if viewAlt}}
-			      <!--<option disabled selected value="select"> -- select a category -- </option>-->
-            {{/if}}
                {{#each Sections}}
                {{#each categories}}
                <option value="{{categoryName}}">{{categoryName}}</option>
                {{/each}}
                {{/each}}
             </select><br />
-			{{#if viewAlt}}
-				<input type="text" name="cat" placeholder="New Category" required><br />
-			{{/if}}
+            <input type="text" name="cat" placeholder="New Category" required><br />
             <input type="hidden" name="sect" class="sect" value="" />
             <label for="expiration">Expires:</label><br />
-            <input type="date" name="expiration" required/><br />
+            <input type="date" name="expiration" required /><br />
             <label for="notification">Notification:</label><br />
             <input type="text" placeholder="3 Days" name="notification" /><br />
             <!--<label for="quantity">Quantity:</label><br />
             <input type="text" placeholder="12" name="quantity" /><br />
             <label for="units">Units:</label><br />
             <input type="text" placeholder="oz" name="units" /><br />-->
-            <label for="shared">Shared:</label><br />
+            <label for="shared">Shared:</label> <br />
             <label class="switch">
-               <input type="checkbox">
+               <input type="checkbox" name="shared">
                <span class="slider round"></span>
             </label>
             <input class="adding" type="submit" id="confirmItembtn" value="Add Item" />
          </form>
       </div>
    </div>
-
    <!--Item click popup-->
    <div id="itemClick" class="modal">
       <div class="modal-content">
          <span class="close"><i class="fa fa-window-close"></i></span>
          <header class="addItem-header" id="itemClickHeader">Edit Item</header>
          <button id="deleteItemBtn">Delete Item</button>
-         <form id="addItemForm" method="get" action="/addItem">
+         <form id="addItemForm" method="get" action="/editItem">
             <label for="itemName">Item:</label><br />
-            <input type="text" placeholder="Item Name" name="itemName" /><br />
+            <input type="text" placeholder="Item Name" name="itemName" required/><br />
             <label for="category">Category:</label><br />
-            <select name="category">
+            <select name="category" required>
                {{#each Sections}}
                {{#each categories}}
                <option value="{{categoryName}}">{{categoryName}}</option>
@@ -110,10 +105,9 @@
                {{/each}}
             </select><br />
             <label for="expiration">Expires:</label><br />
-            <input type="date" name="expiration" /><br />
+            <input type="date" name="expiration" required/><br />
             <label for="notification">Notification:</label><br />
-            <input type="text" placeholder="3 Days" name="notification" /><br />
-
+            <input type="text" placeholder="3 Days" name="notification" required/><br />
             <label for="shared">Shared:</label>
             <label class="switch">
                <input type="checkbox">
@@ -123,7 +117,6 @@
          </form>
       </div>
    </div>
-
    <!--New Category popup-->
    <div id="newCat" class="modal">
       <div class="modal-content">
@@ -136,8 +129,7 @@
          </form>
       </div>
    </div>
-
-    <!-- Nav bar -->
+   <!-- Nav bar -->
    <div class="container-fluid">
       <div class="row fixed-bottom">
          <div class="col bottomNav">
@@ -160,7 +152,6 @@
          </div>
       </div>
    </div>
-
    <!-- Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
