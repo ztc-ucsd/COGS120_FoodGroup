@@ -71,7 +71,7 @@ function initializePage() {
 
    $('input[name=showShared').click(shared);
    $('.sect').val(section);
-   $('.item').click(itemClick);
+   //$('.item').click(itemClick);
    $('.close').click(close);
    $('#addCatbtn').click(analytics);
    $('#addItemForm').on('submit', typed);
