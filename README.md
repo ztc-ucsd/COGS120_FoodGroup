@@ -1,4 +1,4 @@
-FoodGroup (name WIP)
+FridgeShare(name WIP)
 ====
 
 

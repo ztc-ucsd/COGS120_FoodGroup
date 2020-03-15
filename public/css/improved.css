@@ -112,11 +112,11 @@ h2, h2 a{
 #addSectionbtn, #addItembtn {
 	display:block;
 	position: fixed;
-	height: 100px;
-	width: 100px;
+	height: 150px;
+	width: 150px;
 	border-radius: 50%;
 	border: 3px solid black ;
-	font-size: 40px;
+	font-size: 75px;
 	bottom: 10%;
 	right: 3%;
 	margin: auto;
